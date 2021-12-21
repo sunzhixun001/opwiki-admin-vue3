@@ -14,7 +14,10 @@ const vueConfig = {
 				javascriptEnabled: true
 			}
 		}
-	}
+	},
+	devServer: {
+    proxy: 'https://api.weixin.qq.com'
+  }
 }
 
 module.exports = vueConfig

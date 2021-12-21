@@ -1,14 +1,9 @@
 <template>
-  <Layout />
+  <div><router-view></router-view></div>
 </template>
 
 <script>
-import Layout from './layouts'
-
 export default {
-  name: 'App',
-  components: {
-    Layout
-  }
+  name: 'App'
 }
 </script>
