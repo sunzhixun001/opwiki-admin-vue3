@@ -1,16 +1,17 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import BasicLayout from '@/layouts/basicLayout'
+import Layout from '@/layouts'
 import LoginPage from '@/pages/login'
+import TimeLinePage from '@/pages/timeline'
 
 const routes = [
   {
     path: '/',
-    component: BasicLayout,
+    component: Layout,
     children: [
-      { path: '/login', component: LoginPage }
+      { path: '/timeline', component: TimeLinePage }
     ]
   },
-  
+  { path: '/login', component: LoginPage }
 ]
 
 const router = createRouter({

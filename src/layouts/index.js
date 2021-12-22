@@ -25,9 +25,10 @@ export default {
 					<a-layout>
 						<a-layout-header>Header</a-layout-header>
 						<a-layout-content>
-							<router-view></router-view>
+							<div class='pd20'>
+								<router-view></router-view>
+							</div>
 						</a-layout-content>
-						<a-layout-footer>Footer</a-layout-footer>
 					</a-layout>
 				</a-layout>
 			</div>

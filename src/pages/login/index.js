@@ -1,4 +1,6 @@
 import AuthApi from '@/api/auth'
+import {APPID, SECRET} from '@/constant'
+import {setToken} from '@/utils/auth'
 import './login.less'
 
 export default {
@@ -9,11 +11,19 @@ export default {
 		}
 	},
 	methods: {
-		onClick: async function () {
-			this.isLoading = true
-			const res = await AuthApi.getAccessToken()
-			console.log(res)
-			this.isLoading = false
+		getAccessToken: async function () {
+			try {
+				this.isLoading = true
+				const res = await AuthApi.getAccessToken(APPID,SECRET)
+				setToken(res.access_token)
+				this.isLoading = false
+				this.$router.push('/timeline')
+			} catch (error) {
+				this.isLoading = false
+			}
+		},
+		onClick: function () {
+			this.getAccessToken()
 		}
 	},
 	render () {
