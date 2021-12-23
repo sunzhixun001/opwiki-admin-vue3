@@ -12,7 +12,7 @@ axios.interceptors.request.use(config => {
 		config.url = `${config.url}?access_token=${getToken()}`
 		config.data.env = ENVID
 	}
-	console.log(config)
+	// console.log(config)
 	return config
 })
 
@@ -23,7 +23,14 @@ axios.interceptors.response.use(response => {
 	if (data) {
 		const {errcode, errmsg} = data
 		if (!errcode) {
-			return data
+			if (data.data) {
+				return {
+					data: data.data.map(item => JSON.parse(item))
+				}
+			} else {
+				return data
+			}
+			
 		} else if (errcode === 42001) {
 			router.push('/login')
 			return ''
