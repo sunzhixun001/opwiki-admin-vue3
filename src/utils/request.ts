@@ -7,8 +7,8 @@ import router from '@/routers'
 // axios.defaults.baseURL = 'https://api.weixin.qq.com'
 
 axios.interceptors.request.use(config => {
-	const {method} = config
-	if (method.toLocaleUpperCase() === 'POST') {
+	// const {method: Method } = config
+	if (config.method?.toLocaleUpperCase() === 'POST') {
 		config.url = `${config.url}?access_token=${getToken()}`
 		config.data.env = ENVID
 	}
@@ -25,7 +25,7 @@ axios.interceptors.response.use(response => {
 		if (!errcode) {
 			if (data.data) {
 				return {
-					data: data.data.map(item => JSON.parse(item))
+					data: data.data.map((item: any) => JSON.parse(item))
 				}
 			} else {
 				return data

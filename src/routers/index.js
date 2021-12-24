@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Layout from '@/layouts'
-import LoginPage from '@/pages/login'
-import TimeLinePage from '@/pages/timeline'
+const LoginPage = () => import ('@/pages/login')
+const TimeLinePage = () => import ('@/pages/timeline')
 
 const routes = [
   {
